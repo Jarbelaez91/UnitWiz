@@ -42,9 +42,9 @@ function Weight (){
             } else if (toUnit === 'kilogram') {
                 convertedWeight = (value) / 1000
             } else if (toUnit === 'pound') {
-                convertedWeight = (value) * 453.59237
+                convertedWeight = (value) / 453.59237
             } else if (toUnit === 'ounce'){
-                convertedWeight = (value) * 28.34952312
+                convertedWeight = (value) * .03527396195
             } else if (toUnit === 'gram'){
                 convertedWeight = parseFloat(value)
             }else if (toUnit === 'tonne'){
@@ -56,11 +56,11 @@ function Weight (){
             }else if (toUnit === 'stone'){
                 convertedWeight = (value) /6350.29318
             }else if (toUnit === 'troy pound'){
-                convertedWeight = (value) / 373.2417216
+                convertedWeight = (value) * .002679228881
             }else if (toUnit === 'troy ounce'){
-                convertedWeight = (value)/31.1034768
-            }else if (toUnit === 'penny weight'){
-                convertedWeight = (value)/1.55517384
+                convertedWeight = (value) * .03215074657
+            }else if (toUnit === 'pennyweight'){
+                convertedWeight = (value) * .6430149314
             }else if (toUnit === 'grain'){
                 convertedWeight = (value) * 15.43235835
             }else if (toUnit === 'carat'){ 
@@ -79,18 +79,18 @@ function Weight (){
             } else if (toUnit === 'milligram'){
                 convertedWeight = (value) * 1000000
             }else if (toUnit === 'tonne'){
-                convertedWeight = (value) * 1000
+                convertedWeight = (value) * .001
             }else if (toUnit === 'ton long'){
-                convertedWeight = (value) * 1016.046909
+                convertedWeight = (value) * .0009842065276
             }else if (toUnit === 'ton short'){
-                convertedWeight = (value) * 907.18474
+                convertedWeight = (value) * .001102311311
             }else if (toUnit === 'stone'){
-                convertedWeight = (value) * 6.35029318
+                convertedWeight = (value) * .1574730444
             }else if (toUnit === 'troy pound'){
                 convertedWeight = (value) * 2.679228881
             }else if (toUnit === 'troy ounce'){
                 convertedWeight = (value) * 32.15074657
-            }else if (toUnit === 'penny weight'){
+            }else if (toUnit === 'pennyweight'){
                 convertedWeight = (value) * 643.0149314
             }else if (toUnit === 'grain'){
                 convertedWeight = (value) * 15432.35835
@@ -101,33 +101,33 @@ function Weight (){
 
         } else if (fromUnit === 'milligram') {
             if (toUnit === 'gram') {
-                convertedWeight = (value) * 1000
+                convertedWeight = (value) * .0001
             } else if (toUnit === 'kilogram') {
-                convertedWeight = (value) * 1000000
+                convertedWeight = (value) * .000001
             } else if (toUnit === 'pound') {
-                convertedWeight = (value) * 453592.37
+                convertedWeight = (value) / 453592.37
             } else if (toUnit === 'ounce'){
-                convertedWeight = (value) * 28349.52312
+                convertedWeight = (value) / 28349.52312
             } else if (toUnit === 'milligram'){
                 convertedWeight = parseFloat(value)
             }else if (toUnit === 'tonne'){
-                convertedWeight = (value) * 1000000000
+                convertedWeight = (value) / 1000000000
             }else if (toUnit === 'ton long'){
-                convertedWeight = (value) * 1016046909
+                convertedWeight = (value) / 1016046909
             }else if (toUnit === 'ton short'){
-                convertedWeight = (value)* 907184740
+                convertedWeight = (value) / 907184740
             }else if (toUnit === 'stone'){
-                convertedWeight = (value) * 6350293.18
+                convertedWeight = (value) / 6350293.18
             }else if (toUnit === 'troy pound'){
-                convertedWeight = (value) * 373241.7216
+                convertedWeight = (value) / 373241.7216
             }else if (toUnit === 'troy ounce'){
-                convertedWeight = (value) * 31103.4768
-            }else if (toUnit === 'penny weight'){
-                convertedWeight = (value) *1555.17384
+                convertedWeight = (value) / 31103.4768
+            }else if (toUnit === 'pennyweight'){
+                convertedWeight = (value) / 1555.17384
             }else if (toUnit === 'grain'){
-                convertedWeight = (value) * 64.79891
+                convertedWeight = (value) / 64.79891
             }else if (toUnit === 'carat'){
-                convertedWeight = (value) * 200
+                convertedWeight = (value) / 200
             }
 
         } else if (fromUnit === 'pound') {
@@ -153,7 +153,7 @@ function Weight (){
                 convertedWeight = (value) * 1.215277778
             }else if (toUnit === 'troy ounce'){
                 convertedWeight = (value) * 14.58333333
-            }else if (toUnit === 'penny weight'){
+            }else if (toUnit === 'pennyweight'){
                 convertedWeight = (value) * 291.6666667
             }else if (toUnit === 'grain'){
                 convertedWeight = (value) * 7000
@@ -183,7 +183,7 @@ function Weight (){
                 convertedWeight = (value) * .07595486111
             }else if (toUnit === 'troy ounce'){
                 convertedWeight = (value) * .9114583333
-            }else if (toUnit === 'penny weight'){
+            }else if (toUnit === 'pennyweight'){
                 convertedWeight = (value) * 18.29916667
             }else if (toUnit === 'grain'){
                 convertedWeight = (value) * 437.5
@@ -213,252 +213,253 @@ function Weight (){
                 convertedWeight = (value) * 2679.228881
             }else if (toUnit === 'troy ounce'){
                 convertedWeight = (value) * 32150.74657
-            }else if (toUnit === 'penny weight'){
+            }else if (toUnit === 'pennyweight'){
                 convertedWeight = (value) * 643014.9314
             }else if (toUnit === 'grain'){
                 convertedWeight = (value) * 15432358.35
             }else if (toUnit === 'carat'){
                 convertedWeight = (value) * 5000000
             }
-        }else if (fromUnit === 'pound') {
+        }else if (fromUnit === 'ton long') {
             if (toUnit === 'gram') {
-                convertedWeight = (value) * 3412.141632
+                convertedWeight = (value) * 1016046.909
             } else if (toUnit === 'kilogram') {
-                convertedWeight = (value) / 0.7354990028
+                convertedWeight = (value) * 1016.046909
             } else if (toUnit === 'pound') {
-                convertedWeight = (value) * 1000
+                convertedWeight = (value) * 2240
             } else if (toUnit === 'ounce'){
-                convertedWeight = (value) * .2843451361
+                convertedWeight = (value) * 35840
             } else if (toUnit === 'milligram'){
-                convertedWeight = parseFloat(value)
+                convertedWeight = (value) * 1016046909
             }else if (toUnit === 'tonne'){
-                convertedWeight = (value)
+                convertedWeight = (value) *1.016046909
             }else if (toUnit === 'ton long'){
-                convertedWeight = (value)
+                convertedWeight = parseFloat(value) 
             }else if (toUnit === 'ton short'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 1.12
             }else if (toUnit === 'stone'){
-                convertedWeight = (value)
+                convertedWeight = (value)* 160
             }else if (toUnit === 'troy pound'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 2722.2222222
             }else if (toUnit === 'troy ounce'){
-                convertedWeight = (value)
-            }else if (toUnit === 'penny weight'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 32666.66667
+            }else if (toUnit === 'pennyweight'){
+                convertedWeight = (value) * 653333.3333
             }else if (toUnit === 'grain'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 15680000
             }else if (toUnit === 'carat'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 5080234.544
             }
-        }else if (fromUnit === 'pound') {
+        }else if (fromUnit === 'ton short') {
             if (toUnit === 'gram') {
-                convertedWeight = (value) * 3412.141632
+                convertedWeight = (value) * 9071884.74
             } else if (toUnit === 'kilogram') {
-                convertedWeight = (value) / 0.7354990028
+                convertedWeight = (value) * 907.18474
             } else if (toUnit === 'pound') {
-                convertedWeight = (value) * 1000
+                convertedWeight = (value) * 2000
             } else if (toUnit === 'ounce'){
-                convertedWeight = (value) * .2843451361
+                convertedWeight = (value) * 32000
             } else if (toUnit === 'milligram'){
-                convertedWeight = parseFloat(value)
+                convertedWeight = (value) * 907184740
             }else if (toUnit === 'tonne'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .90718474
             }else if (toUnit === 'ton long'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .8928571429
             }else if (toUnit === 'ton short'){
-                convertedWeight = (value)
+                convertedWeight = parseFloat(value)
             }else if (toUnit === 'stone'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 142.8571429
             }else if (toUnit === 'troy pound'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 2430.5555556
             }else if (toUnit === 'troy ounce'){
-                convertedWeight = (value)
-            }else if (toUnit === 'penny weight'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 29166.66667
+            }else if (toUnit === 'pennyweight'){
+                convertedWeight = (value) * 583333.3333
             }else if (toUnit === 'grain'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 14000000
             }else if (toUnit === 'carat'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 4535923.7
             }
-        }else if (fromUnit === 'pound') {
+
+        }else if (fromUnit === 'stone') {
             if (toUnit === 'gram') {
-                convertedWeight = (value) * 3412.141632
+                convertedWeight = (value) * 6350.29318
             } else if (toUnit === 'kilogram') {
-                convertedWeight = (value) / 0.7354990028
+                convertedWeight = (value) * 6.35029318
             } else if (toUnit === 'pound') {
-                convertedWeight = (value) * 1000
+                convertedWeight = (value) * 14
             } else if (toUnit === 'ounce'){
-                convertedWeight = (value) * .2843451361
+                convertedWeight = (value) * 224
             } else if (toUnit === 'milligram'){
-                convertedWeight = parseFloat(value)
+                convertedWeight = (value) * 6350293.18
             }else if (toUnit === 'tonne'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .00635029318
             }else if (toUnit === 'ton long'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .00625
             }else if (toUnit === 'ton short'){
-                convertedWeight = (value)
+                convertedWeight = (value)* .007
             }else if (toUnit === 'stone'){
-                convertedWeight = (value)
+                convertedWeight = parseFloat(value)
             }else if (toUnit === 'troy pound'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 17.01388889
             }else if (toUnit === 'troy ounce'){
-                convertedWeight = (value)
-            }else if (toUnit === 'penny weight'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 204.16666667
+            }else if (toUnit === 'pennyweight'){
+                convertedWeight = (value) * 4083.333333
             }else if (toUnit === 'grain'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 980000
             }else if (toUnit === 'carat'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 31751.4659
             }
-        }else if (fromUnit === 'pound') {
+        }else if (fromUnit === 'troy pound') {
             if (toUnit === 'gram') {
-                convertedWeight = (value) * 3412.141632
+                convertedWeight = (value) * 373.2417216
             } else if (toUnit === 'kilogram') {
-                convertedWeight = (value) / 0.7354990028
+                convertedWeight = (value) * .3732417216
             } else if (toUnit === 'pound') {
-                convertedWeight = (value) * 1000
+                convertedWeight = (value) * .8228571429
             } else if (toUnit === 'ounce'){
-                convertedWeight = (value) * .2843451361
+                convertedWeight = (value) * 13.16571429
             } else if (toUnit === 'milligram'){
-                convertedWeight = parseFloat(value)
+                convertedWeight = (value) * 373241.7216
             }else if (toUnit === 'tonne'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .0003732417216
             }else if (toUnit === 'ton long'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .0003673469388
             }else if (toUnit === 'ton short'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .0004114285714
             }else if (toUnit === 'stone'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .0587755102
             }else if (toUnit === 'troy pound'){
-                convertedWeight = (value)
+                convertedWeight = parseFloat(value) 
             }else if (toUnit === 'troy ounce'){
-                convertedWeight = (value)
-            }else if (toUnit === 'penny weight'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 12
+            }else if (toUnit === 'pennyweight'){
+                convertedWeight = (value) * 240
             }else if (toUnit === 'grain'){
-                convertedWeight = (value)
+                convertedWeight = (value) *5760
             }else if (toUnit === 'carat'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 1866.208608
             }
-        }else if (fromUnit === 'pound') {
+        }else if (fromUnit === 'troy ounce') {
             if (toUnit === 'gram') {
-                convertedWeight = (value) * 3412.141632
+                convertedWeight = (value) * 31.1034768
             } else if (toUnit === 'kilogram') {
-                convertedWeight = (value) / 0.7354990028
+                convertedWeight = (value) * .0311034768
             } else if (toUnit === 'pound') {
-                convertedWeight = (value) * 1000
+                convertedWeight = (value) * .06857142857
             } else if (toUnit === 'ounce'){
-                convertedWeight = (value) * .2843451361
+                convertedWeight = (value) * 1.097142857
             } else if (toUnit === 'milligram'){
-                convertedWeight = parseFloat(value)
+                convertedWeight = (value) * 31103.4768
             }else if (toUnit === 'tonne'){
-                convertedWeight = (value)
+                convertedWeight = (value) *.0000311034768
             }else if (toUnit === 'ton long'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .0000306122449
             }else if (toUnit === 'ton short'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .00003428571429
             }else if (toUnit === 'stone'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .004897959184
             }else if (toUnit === 'troy pound'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .08333333333
             }else if (toUnit === 'troy ounce'){
-                convertedWeight = (value)
-            }else if (toUnit === 'penny weight'){
-                convertedWeight = (value)
+                convertedWeight = parseFloat(value) 
+            }else if (toUnit === 'pennyweight'){
+                convertedWeight = (value) * 20
             }else if (toUnit === 'grain'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 480
             }else if (toUnit === 'carat'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 155.517384
             }
-        }else if (fromUnit === 'pound') {
+        }else if (fromUnit === 'pennyweight') {
             if (toUnit === 'gram') {
-                convertedWeight = (value) * 3412.141632
+                convertedWeight = (value) * 1.55517384
             } else if (toUnit === 'kilogram') {
-                convertedWeight = (value) / 0.7354990028
+                convertedWeight = (value) * .00155517384
             } else if (toUnit === 'pound') {
-                convertedWeight = (value) * 1000
+                convertedWeight = (value) * .003428571429
             } else if (toUnit === 'ounce'){
-                convertedWeight = (value) * .2843451361
+                convertedWeight = (value) * .05485714286
             } else if (toUnit === 'milligram'){
-                convertedWeight = parseFloat(value)
+                convertedWeight = (value) * 1555.17384
             }else if (toUnit === 'tonne'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .00000155517384
             }else if (toUnit === 'ton long'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .000001530612245
             }else if (toUnit === 'ton short'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .000001714285714
             }else if (toUnit === 'stone'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .0002448979592
             }else if (toUnit === 'troy pound'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .00416666666667
             }else if (toUnit === 'troy ounce'){
-                convertedWeight = (value)
-            }else if (toUnit === 'penny weight'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .05
+            }else if (toUnit === 'pennyweight'){
+                convertedWeight = parseFloat(value)
             }else if (toUnit === 'grain'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 24
             }else if (toUnit === 'carat'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 7.7758692
             }
-        }else if (fromUnit === 'pound') {
+        }else if (fromUnit === 'grain') {
             if (toUnit === 'gram') {
-                convertedWeight = (value) * 3412.141632
+                convertedWeight = (value) * .06479891
             } else if (toUnit === 'kilogram') {
-                convertedWeight = (value) / 0.7354990028
+                convertedWeight = (value) * .00006479891
             } else if (toUnit === 'pound') {
-                convertedWeight = (value) * 1000
+                convertedWeight = (value) * .0001428571429
             } else if (toUnit === 'ounce'){
-                convertedWeight = (value) * .2843451361
+                convertedWeight = (value) * .002285714286
             } else if (toUnit === 'milligram'){
-                convertedWeight = parseFloat(value)
+                convertedWeight = (value) * 64.79891
             }else if (toUnit === 'tonne'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .00000006479891
             }else if (toUnit === 'ton long'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .000000637755102
             }else if (toUnit === 'ton short'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .00000007142857143
             }else if (toUnit === 'stone'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .00001020408163
             }else if (toUnit === 'troy pound'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .0001736111111
             }else if (toUnit === 'troy ounce'){
-                convertedWeight = (value)
-            }else if (toUnit === 'penny weight'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .002083333333
+            }else if (toUnit === 'pennyweight'){
+                convertedWeight = (value) * .0416666667
             }else if (toUnit === 'grain'){
-                convertedWeight = (value)
+                convertedWeight = parseFloat(value) 
             }else if (toUnit === 'carat'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .32399455
             }
-        }else if (fromUnit === 'pound') {
+        }else if (fromUnit === 'carat') {
             if (toUnit === 'gram') {
-                convertedWeight = (value) * 3412.141632
+                convertedWeight = (value) * .0002
             } else if (toUnit === 'kilogram') {
-                convertedWeight = (value) / 0.7354990028
+                convertedWeight = (value) * .2
             } else if (toUnit === 'pound') {
-                convertedWeight = (value) * 1000
+                convertedWeight = (value) * .0004409245244
             } else if (toUnit === 'ounce'){
-                convertedWeight = (value) * .2843451361
+                convertedWeight = (value) * .00705479239
             } else if (toUnit === 'milligram'){
-                convertedWeight = parseFloat(value)
+                convertedWeight = (value) * 200
             }else if (toUnit === 'tonne'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .0000002
             }else if (toUnit === 'ton long'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .0000001968413055
             }else if (toUnit === 'ton short'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .0000002204622622
             }else if (toUnit === 'stone'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .00003149460888
             }else if (toUnit === 'troy pound'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .0005358457761
             }else if (toUnit === 'troy ounce'){
-                convertedWeight = (value)
-            }else if (toUnit === 'penny weight'){
-                convertedWeight = (value)
+                convertedWeight = (value) * .006430149314
+            }else if (toUnit === 'pennyweight'){
+                convertedWeight = (value) * .1286029863
             }else if (toUnit === 'grain'){
-                convertedWeight = (value)
+                convertedWeight = (value) * 3.086471671
             }else if (toUnit === 'carat'){
-                convertedWeight = (value)
+                convertedWeight = parseFloat(value) 
             }
         }
          if (!isNaN(convertedWeight)) {
