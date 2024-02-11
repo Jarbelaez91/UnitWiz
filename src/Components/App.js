@@ -7,6 +7,7 @@ import DataCon from './DataCon';
 import TemperatureCon from './TemperatureCon'
 import Power from './Power'
 import Weight from './Weight'
+import Speed from './Speed';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="temperature" element={<TemperatureCon/>}/>
           <Route path ="power" element= {<Power/>}/>
           <Route path ="weight" element= {<Weight/>}/>
+          <Route path = "speed" element = {<Speed/>}/>
         </Routes>
       </div>
     </Router>
