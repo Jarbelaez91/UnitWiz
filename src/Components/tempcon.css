@@ -1,0 +1,108 @@
+.temperature-container {
+    display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 120px;
+  margin: auto;
+  background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+  width: auto;
+  height: auto;
+  padding-right: 1000px;
+  padding-left: 1000px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  animation: gradientTransition .5s infinite alternate; /* Adjust animation duration as needed */
+  }
+
+  .title {
+    font-size: 55px;
+    border-radius: 30px;
+    width: 200px;
+    font-family: "Protest Riot", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color:  #30D2BE; /* Text color */
+    -webkit-text-stroke: 2px black; /* Black border around each letter */
+    margin-right: 90px; /* Adjust spacing between words */
+    margin-left: 40px;
+  }
+  
+  .title-con {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 12vh; /* Set the height of the container to full viewport height */
+    background-image: linear-gradient(90deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+    padding-top: 20px;
+  }
+  
+  
+  .quadrant1 {
+    border: 5px solid #000000;
+  padding: 20px;
+  text-align: center;
+  background-image: linear-gradient(-90deg, #9EFBD3 0%, #57E9F2 48%, #45D4FB 100%);
+  border-radius: 30px;
+  width: 300px;
+  transition: background-image 0.3s ease-in-out; /* Adjust transition duration as needed */
+  font-weight: bold;
+  }
+  
+  .quadrant2 {
+    border: 5px solid #000000;
+  padding: 20px;
+  text-align: center;
+  background-image: linear-gradient(-90deg, #9EFBD3 0%, #57E9F2 48%, #45D4FB 100%);
+  border-radius: 30px;
+  width: 300px;
+  transition: background-image 0.3s ease-in-out; /* Adjust transition duration as needed */
+  font-weight: bold;
+  }
+  
+  .quadrant3 {
+    border: 5px solid #000000;
+    padding: 20px;
+    text-align: center;
+    background-image: linear-gradient(-90deg, #9EFBD3 0%, #57E9F2 48%, #45D4FB 100%);
+    border-radius: 30px;
+    width: 300px;
+    transition: background-image 0.3s ease-in-out; /* Adjust transition duration as needed */
+    font-weight: bold;
+  }
+  
+  .quadrant4 {
+    border: 5px solid #000000;
+    padding: 20px;
+    text-align: center;
+    background-image: linear-gradient(-90deg, #9EFBD3 0%, #57E9F2 48%, #45D4FB 100%);
+    border-radius: 30px;
+    width: 300px;
+    transition: background-image 0.3s ease-in-out; /* Adjust transition duration as needed */
+    font-weight: bold;
+  }
+  
+  /* Style for labels, select elements, input elements, and the button */
+  .label,
+  .select,
+  .input{
+    font-size: 20px;
+    margin-top: 20px; /* Add margin as needed */
+  }
+  
+  
+  
+  .quadrant5 button {
+    border: 5px solid #000000;
+    padding: 20px;
+    text-align: center;
+    background-image: linear-gradient(-90deg, #9EFBD3 0%, #57E9F2 48%, #45D4FB 100%);
+    border-radius: 30px;
+    width: 200px;
+    transition: background-image 0.3s ease-in-out; /* Adjust transition duration as needed */
+    margin-left: 1300px;
+    margin-top: 10px;
+    font-family: Arial, sans-serif; /* Change the font family */
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: -1000px;
+  }
+  

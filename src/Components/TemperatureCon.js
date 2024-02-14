@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './TimeCon.css';
+import "./tempcon.css"
 
 const TemperatureCon = () => {
 
@@ -93,11 +93,16 @@ const navigate = useNavigate();
 
   return (
     <div>
-      <h2>Temperature Conversion</h2>
+      <div className='title-con'>
+      <span className= "title">Temperature</span>
+      <span className= "title">Conversion</span>
+      </div>
       <div>
-        <label>
+      <div className='temperature-container'>
+      <div className='quadrant1'>
+        <label className='label'>
           From:
-          <select value={leftUnit} onChange={(e) => handleLeftUnitChange(e.target.value)}>
+          <select className ='select' value={leftUnit} onChange={(e) => handleLeftUnitChange(e.target.value)}>
             <option value="celsius">Celsius</option>
             <option value="fahrenheit">Fahrenheit</option>
             <option value="kelvin">Kelvin</option>
@@ -105,10 +110,10 @@ const navigate = useNavigate();
           </select>
         </label>
       </div>
-      <div>
-        <label>
+      <div className='quadrant2'>
+        <label className='label'>
           To:
-          <select value={rightUnit} onChange={(e) => handleRightUnitChange(e.target.value)}>
+          <select className='select' value={rightUnit} onChange={(e) => handleRightUnitChange(e.target.value)}>
             <option value="celsius">Celsius</option>
             <option value="fahrenheit">Fahrenheit</option>
             <option value="kelvin">Kelvin</option>
@@ -116,27 +121,33 @@ const navigate = useNavigate();
           </select>
         </label>
       </div>
-      <div>
-        <label>
+      <div className='quadrant3'>
+        <label className='label'>
           Input Value:
-          <input
+          <input className='input'
             type="number"
             value={inputValue}
             onChange={(e) => handleInputChange(e.target.value)}
           />
         </label>
       </div>
-      <div>
-        <label>
+      <div className='quadrant4'>
+        <label className='label'>
           Converted Value:
-          <input
+          <input className='input'
             type="number"
             value={convertedValue}
             readOnly
           />
         </label>
+        </div>
+        </div>
         <div>
+          <div> </div>
+        <div className='quadrant5'>
+
           <button onClick={handleBackButtonClick}>Back to Homepage</button>
+        </div>
         </div>
       </div>
     </div>

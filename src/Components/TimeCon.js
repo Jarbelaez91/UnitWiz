@@ -101,7 +101,6 @@ const TimeCon = () => {
             </div>
             <div>
               <label>
-                {/* Input for the selected unit */}
                 Input Value:
                 <input
                   type="number"
@@ -136,9 +135,9 @@ const TimeCon = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div >
+          <div className='column right-column con result'>
         <label>
-          {/* Input for displaying the conversion result (read-only) */}
           Conversion Result:
           <input
             type="text"
@@ -146,6 +145,7 @@ const TimeCon = () => {
             readOnly
           />
         </label>
+        </div>
       </div>
         <div classname= 'btn'>
           <button onClick={handleBackButtonClick}>Back to Homepage</button>
