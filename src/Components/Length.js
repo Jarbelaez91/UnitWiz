@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import './TimeCon.css';
 
 function Length (){
 
@@ -246,6 +247,8 @@ return (
 
 <div>
     <h2> Length Conversion</h2>
+    <div className="container">
+    <div className="column left-column">
     <div>
     <label> Select Unit:
         <select value={leftUnit} onChange={(e) =>handleLeftUnitChange(e.target.value)}>
@@ -268,6 +271,7 @@ return (
         onChange={(e) => handleInputChange (e.target.value)}
         />
     </div>
+    <div className="column right-column"/>
     </div>
     <div>
         <label>
@@ -295,6 +299,8 @@ return (
     <div>
           <button onClick={handleBackButtonClick}>Back to Homepage</button>
     </div>
+</div>
+</div>
 </div>
 
 

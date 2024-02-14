@@ -147,7 +147,7 @@ const TimeCon = () => {
           />
         </label>
       </div>
-        <div>
+        <div classname= 'btn'>
           <button onClick={handleBackButtonClick}>Back to Homepage</button>
         </div>
       </div>

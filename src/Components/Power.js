@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import './TimeCon.css';
 
 function Power (){
 
@@ -152,7 +153,7 @@ return (
         value={convertedValue}
         readOnly/>
     </div>
-    <div>
+    <div >
           <button onClick={handleBackButtonClick}>Back to Homepage</button>
     </div>
 </div>
