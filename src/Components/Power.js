@@ -112,53 +112,68 @@ function Power (){
 
 
 return (
-
-<div>
-    <h2> Power Conversion</h2>
     <div>
-    <label> Select Unit:
-        <select value={leftUnit} onChange={(e) =>handleLeftUnitChange(e.target.value)}>
-        <option value= 'btu/h' > Btu/h</option>
-        <option value= 'horse power' > Horse Power</option>
-        <option value= 'kilowatt' > Kilowatt</option>
-        <option value= 'watt' > Watt</option>
-        <option value= 'ton of refrigeration' > Ton of refrigeration</option>
-        </select>
-    </label>
-    <div>
-        <label>Input Value:</label>
-        <input
-        type= "number"
-        value={inputValue}
-        onChange={(e) => handleInputChange (e.target.value)}
-        />
-    </div>
-    </div>
-    <div>
-        <label>
-            Convert to:
+      <div className='title-con'>
+      <span className= "title">Power</span>
+      <span className= "title">Conversion</span>
+      </div>
+      <div>
+      <div className='temperature-container'>
+      <div className='quadrant1'>
+        <label className='label'>
+          From:
+          <select className ='select' value={leftUnit} onChange={(e) => handleLeftUnitChange(e.target.value)}>
+            <option value= 'btu/h' > Btu/h</option>
+            <option value= 'horse power' > Horse Power</option>
+            <option value= 'kilowatt' > Kilowatt</option>
+            <option value= 'watt' > Watt</option>
+            <option value= 'ton of refrigeration' > Ton of refrigeration</option>
+          </select>
         </label>
-        <select value = {rightUnit} onChange={(e) => handleRightUnitChange(e.target.value)}>
-        <option value= 'btu/h' > Btu/h</option>
-        <option value= 'horse power' > Horse Power</option>
-        <option value= 'kilowatt' > Kilowatt</option>
-        <option value= 'watt' > Watt</option>
-        <option value= 'ton of refrigeration' > Ton of refrigeration</option>
-        </select>
-    </div>
-    <div>
-        <label> conversion:</label>
-        <input 
-        type= "number"
-        value={convertedValue}
-        readOnly/>
-    </div>
-    <div >
+      </div>
+      <div className='quadrant2'>
+        <label className='label'>
+          To:
+          <select className='select' value={rightUnit} onChange={(e) => handleRightUnitChange(e.target.value)}>
+            <option value= 'btu/h' > Btu/h</option>
+            <option value= 'horse power' > Horse Power</option>
+            <option value= 'kilowatt' > Kilowatt</option>
+            <option value= 'watt' > Watt</option>
+            <option value= 'ton of refrigeration' > Ton of refrigeration</option>
+          </select>
+        </label>
+      </div>
+      <div className='quadrant3'>
+        <label className='label'>
+          Input Value:
+          <input className='input'
+            type="number"
+            value={inputValue}
+            onChange={(e) => handleInputChange(e.target.value)}
+          />
+        </label>
+      </div>
+      <div className='quadrant4'>
+        <label className='label'>
+          Converted Value:
+          <input className='input'
+            type="number"
+            value={convertedValue}
+            readOnly
+          />
+        </label>
+        </div>
+        </div>
+        <div>
+          <div> </div>
+        <div className='quadrant5'>
+
           <button onClick={handleBackButtonClick}>Back to Homepage</button>
+        </div>
+        </div>
+      </div>
     </div>
-</div>
+  );
+};
 
-
-)
-}
-export default Power
+export default Power;

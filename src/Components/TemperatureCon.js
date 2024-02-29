@@ -66,7 +66,7 @@ const navigate = useNavigate();
         convertedTemp = (value - 273.15) * (9 / 5) + 32;
       } else if (toUnit === 'rankine') {
         convertedTemp = value * (9 / 5);
-    } else if (toUnit === 'kevlin') {
+    } else if (toUnit === 'kelvin') {
         convertedTemp = parseFloat(value)
       }
 

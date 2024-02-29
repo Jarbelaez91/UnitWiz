@@ -1,135 +1,205 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './TimeCon.css';
+import "./tempcon.css"
 
 const DataCon = () => {
-  const navigate = useNavigate();
+
+const navigate = useNavigate();
 
   const handleBackButtonClick = () => {
     navigate('/');
+
+  }
+  const [leftUnit, setLeftUnit] = useState('bit');
+  const [rightUnit, setRightUnit] = useState('byte');
+  const [inputValue, setInputValue] = useState('');
+  const [convertedValue, setConvertedValue] = useState('');
+
+  const handleInputChange = (value) => {
+    setInputValue(value);
+    convertData(value, leftUnit, rightUnit);
   };
 
-  const [selectedUnitLeft, setSelectedUnitLeft] = useState('bit');
-  const [selectedUnitRight, setSelectedUnitRight] = useState('byte');
-  const [inputValueLeft, setInputValueLeft] = useState('');
-  const [conversionResult, setConversionResult] = useState('');
-  
-  const leftColumnRef = useRef();
-  const rightColumnRef = useRef();
+  const handleLeftUnitChange = (unit) => {
+    setLeftUnit(unit);
+    convertData(inputValue, unit, rightUnit);
+  };
 
-  useEffect(() => {
-    const updateConversionResult = () => {
-      const value = parseFloat(inputValueLeft);
+  const handleRightUnitChange = (unit) => {
+    setRightUnit(unit);
+    convertData(inputValue, leftUnit, unit);
+  };
 
-      if (!isNaN(value)) {
-        const conversion = calculateConversion(value, selectedUnitLeft, selectedUnitRight);
-        setConversionResult(conversion);
+  const convertData = (value, fromUnit, toUnit) => {
+    if (!value.trim()) {
+      setConvertedValue('');
+      return;
+    }
+
+    let convertedData;
+    if (fromUnit === 'bit') {
+      if (toUnit === 'byte') {
+        convertedData = (value) * .125;
+      } else if (toUnit === 'kilobyte') {
+        convertedData = (value)* .0001220703125;
+      } else if (toUnit === 'megabyte') {
+        convertedData = (value) * .0000001192092896;
+      } else if (toUnit === 'bit') {
+        convertedData = parseFloat(value)
+      }
+      else if (toUnit === 'gigabyte') {
+        convertedData = (value) * .0000000001164153218;
+      }else if (toUnit === 'terabyte') {
+          convertedData = (value) * .0000000000001136868377;
+      }
+
+    } else if (fromUnit === 'byte') {
+      if (toUnit === 'bit') {
+        convertedData = value * 8 
+      } else if (toUnit === 'kilobyte') {
+        convertedData = value * .0009765625 ;
+      } else if (toUnit === 'megabyte') {
+        convertedData = (value) * .0000009536743164;
+    } else if (toUnit === 'byte') {
+        convertedData = parseFloat(value)
+      }
+      else if (toUnit === 'gigabyte') {
+        convertedData = (value) * .0000000009313225746;
+      }else if (toUnit === 'terabyte') {
+          convertedData = (value) * .0000000000009094947018;
+      }
+
+    } else if (fromUnit === 'kilobyte') {
+      if (toUnit === 'bit') {
+        convertedData = value * 8192;
+      } else if (toUnit === 'byte') {
+        convertedData = value * 1024;
+      } else if (toUnit === 'megabyte') {
+        convertedData = value * .0009765625;
+    } else if (toUnit === 'kilobyte') {
+        convertedData = parseFloat(value)
+      }
+      else if (toUnit === 'gigabyte') {
+        convertedData = (value) * .0000009536743164;
+      }else if (toUnit === 'terabyte') {
+          convertedData = (value) * .0000000009313225746;
+      }
+
+
+    } else if (fromUnit === 'megabyte') {
+      if (toUnit === 'bit') {
+        convertedData = value * 8388608 ;
+      } else if (toUnit === 'byte') {
+        convertedData = value * 1048576;
+      } else if (toUnit === 'kilobyte') {
+        convertedData = value * 1024;
+    } else if (toUnit ==='megabyte' ) {
+        convertedData = parseFloat(value)
+      }
+      else if (toUnit === 'gigabyte') {
+        convertedData = (value) * .0009765625;
+      }else if (toUnit === 'terabyte') {
+          convertedData = (value) * .0000009536743164;
+      }
+
+      }else if (fromUnit === 'gigabyte') {
+        if (toUnit === 'bit') {
+          convertedData = value * 8589934592 ;
+        } else if (toUnit === 'byte') {
+          convertedData = value * 1073741824;
+        } else if (toUnit === 'kilobyte') {
+          convertedData = value * 1048576;
+      } else if (toUnit ==='gigabyte' ) {
+          convertedData = parseFloat(value)
+        }
+        else if (toUnit === 'megabyte') {
+          convertedData = (value) * 1024;
+        }else if (toUnit === 'terabyte') {
+            convertedData = (value) * .0009765625;
+        }
+
+        }else if (fromUnit === 'terabyte') {
+          if (toUnit === 'bit') {
+            convertedData = value * 8796093022000 ;
+          } else if (toUnit === 'byte') {
+            convertedData = value * 1099511628000;
+          } else if (toUnit === 'kilobyte') {
+            convertedData = value * 1073741824;
+        } else if (toUnit ==='terabyte' ) {
+            convertedData = parseFloat(value)
+          }
+          else if (toUnit === 'gigabyte') {
+            convertedData = (value) * 1024;
+          }else if (toUnit === 'megabyte') {
+              convertedData = (value) * 1048576;
+          }
+
+    }
+    if (!isNaN(convertedData)) {
+        setConvertedValue(convertedData.toFixed(2));
       } else {
-        setConversionResult('');
+        setConvertedValue('');
       }
     };
-
-    updateConversionResult();
-  }, [selectedUnitLeft, selectedUnitRight, inputValueLeft]);
-
-  const calculateConversion = (value, fromUnit, toUnit) => {
-    const unitsInBytes = {
-      terabyte: 1099511627776,
-      gigabyte: 1073741824,
-      megabyte: 1048576,
-      kilobyte: 1024,
-      byte: 1,
-      bit: 1 / 8,
-    };
-
-    const valueInBytes = value * unitsInBytes[fromUnit];
-    return (valueInBytes / unitsInBytes[toUnit]).toFixed(10);
-  };
-
-  const handleLeftColumnScroll = (e) => {
-    const scrollTop = e.target.scrollTop;
-    const unitHeight = e.target.scrollHeight / 6; 
-
-    const index = Math.floor(scrollTop / unitHeight);
-    const units = ['bit', 'byte', 'kilobyte', 'megabyte', 'gigabyte', 'terabyte']
-
-    setSelectedUnitLeft(units[index]);
-  };
-
-  const handleRightColumnScroll = (e) => {
-    const scrollTop = e.target.scrollTop;
-    const unitHeight = e.target.scrollHeight / 6; 
-
-    const index = Math.floor(scrollTop / unitHeight);
-    const units = ['bit', 'byte', 'kilobyte', 'megabyte', 'gigabyte', 'terabyte'];
-
-    setSelectedUnitRight(units[index]);
-  };
+      
 
   return (
     <div>
+      <div className='title-con'>
+      <span className= "title">Temperature</span>
+      <span className= "title">Conversion</span>
+      </div>
       <div>
-        <h2>Data Conversion</h2>
-        <div className="container">
-          <div className="column left-column" ref={leftColumnRef} onScroll={handleLeftColumnScroll}>
-            <div>
-              <label>
-                Select Unit:
-                <select
-                  value={selectedUnitLeft}
-                  onChange={(e) => setSelectedUnitLeft(e.target.value)}
-                >
-                  <option value="bit">Bit</option>
-                  <option value="byte">Byte</option>
-                  <option value="kilobyte">Kilobyte</option>
-                  <option value="megabyte">Megabyte</option>
-                  <option value="gigabyte">Gigabyte</option>
-                  <option value="terabyte">Terabyte</option>
-                </select>
-              </label>
-            </div>
-            <div>
-              <label>
-                Input Value:
-                <input
-                  type="number"
-                  value={inputValueLeft}
-                  onChange={(e) => setInputValueLeft(e.target.value)}
-                />
-              </label>
-            </div>
-          </div>
-          <div className="column right-column" ref={rightColumnRef} onScroll={handleRightColumnScroll}>
-            <div>
-              <label>
-                Select Unit:
-                <select
-                  value={selectedUnitRight}
-                  onChange={(e) => setSelectedUnitRight(e.target.value)}
-                >
-                   <option value="bit">Bit</option>
-                  <option value="byte">Byte</option>
-                  <option value="kilobyte">Kilobyte</option>
-                  <option value="megabyte">Megabyte</option>
-                  <option value="gigabyte">Gigabyte</option>
-                  <option value="terabyte">Terabyte</option>
-                </select>
-              </label>
-            </div>
-          </div>
-        </div>
-        <div>
-        <label>
-          Conversion Result:
-          <input
-            type="text"
-            value={conversionResult}
-            readOnly
+      <div className='temperature-container'>
+      <div className='quadrant1'>
+        <label className='label'>
+          From:
+          <select className ='select' value={leftUnit} onChange={(e) => handleLeftUnitChange(e.target.value)}>
+            <option value="bit">bit</option>
+            <option value="byte">byte</option>
+            <option value="kilobyte">kilobyte</option>
+            <option value="megabyte">megabyte</option>
+          </select>
+        </label>
+      </div>
+      <div className='quadrant2'>
+        <label className='label'>
+          To:
+          <select className='select' value={rightUnit} onChange={(e) => handleRightUnitChange(e.target.value)}>
+            <option value="bit">bit</option>
+            <option value="byte">byte</option>
+            <option value="kilobyte">kilobyte</option>
+            <option value="megabyte">megabyte</option>
+          </select>
+        </label>
+      </div>
+      <div className='quadrant3'>
+        <label className='label'>
+          Input Value:
+          <input className='input'
+            type="number"
+            value={inputValue}
+            onChange={(e) => handleInputChange(e.target.value)}
           />
         </label>
       </div>
+      <div className='quadrant4'>
+        <label className='label'>
+          Converted Value:
+          <input className='input'
+            type="number"
+            value={convertedValue}
+            readOnly
+          />
+        </label>
+        </div>
+        </div>
         <div>
+          <div> </div>
+        <div className='quadrant5'>
+
           <button onClick={handleBackButtonClick}>Back to Homepage</button>
+        </div>
         </div>
       </div>
     </div>
@@ -137,3 +207,5 @@ const DataCon = () => {
 };
 
 export default DataCon;
+
+

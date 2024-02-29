@@ -244,66 +244,76 @@ function Length (){
 
 
 return (
-
-<div>
-    <h2> Length Conversion</h2>
-    <div className="container">
-    <div className="column left-column">
     <div>
-    <label> Select Unit:
-        <select value={leftUnit} onChange={(e) =>handleLeftUnitChange(e.target.value)}>
-        <option value= 'centimeter' > Centimeter</option>
-        <option value= 'kilometer' > Kilometer</option>
-        <option value= 'meter' > Meter</option>
-        <option value= 'millimeter' > millimeter</option>
-        <option value= 'mile' > Mile</option>
-        <option value= 'yard' > Yard </option>
-        <option value= 'inch' > Inch </option>
-        <option value= 'foot' > Foot </option>
-        <option value= 'nautical mile' > Nautical Mile </option>
-        </select>
-    </label>
-    <div>
-        <label>Input Value:</label>
-        <input
-        type= "number"
-        value={inputValue}
-        onChange={(e) => handleInputChange (e.target.value)}
-        />
-    </div>
-    <div className="column right-column"/>
-    </div>
-    <div>
-        <label>
-            Convert to:
+      <div className='title-con'>
+      <span className= "title">Length</span>
+      <span className= "title">Conversion</span>
+      </div>
+      <div>
+      <div className='temperature-container'>
+      <div className='quadrant1'>
+        <label className='label'>
+          From:
+          <select className ='select' value={leftUnit} onChange={(e) => handleLeftUnitChange(e.target.value)}>
+            <option value= 'centimeter' > Centimeter</option>
+            <option value= 'kilometer' > Kilometer</option>
+            <option value= 'meter' > Meter</option>
+            <option value= 'millimeter' > millimeter</option>
+            <option value= 'mile' > Mile</option>
+            <option value= 'yard' > Yard </option>
+            <option value= 'inch' > Inch </option>
+            <option value= 'foot' > Foot </option>
+            <option value= 'nautical mile' > Nautical Mile </option>
+          </select>
         </label>
-        <select value = {rightUnit} onChange={(e) => handleRightUnitChange(e.target.value)}>
-        <option value= 'centimeter' > Centimeter</option>
-        <option value= 'kilometer' > Kilometer</option>
-        <option value= 'meter' > Meter</option>
-        <option value= 'millimeter' > millimeter</option>
-        <option value= 'mile' > Mile</option>
-        <option value= 'yard' > Yard </option>
-        <option value= 'inch' > Inch </option>
-        <option value= 'foot' > Foot </option>
-        <option value= 'nautical mile' > Nautical Mile </option>
-        </select>
-    </div>
-    <div>
-        <label> conversion:</label>
-        <input 
-        type= "number"
-        value={convertedValue}
-        readOnly/>
-    </div>
-    <div>
+      </div>
+      <div className='quadrant2'>
+        <label className='label'>
+          To:
+          <select className='select' value={rightUnit} onChange={(e) => handleRightUnitChange(e.target.value)}>
+            <option value= 'centimeter' > Centimeter</option>
+            <option value= 'kilometer' > Kilometer</option>
+            <option value= 'meter' > Meter</option>
+            <option value= 'millimeter' > millimeter</option>
+            <option value= 'mile' > Mile</option>
+            <option value= 'yard' > Yard </option>
+            <option value= 'inch' > Inch </option>
+            <option value= 'foot' > Foot </option>
+            <option value= 'nautical mile' > Nautical Mile </option>
+          </select>
+        </label>
+      </div>
+      <div className='quadrant3'>
+        <label className='label'>
+          Input Value:
+          <input className='input'
+            type="number"
+            value={inputValue}
+            onChange={(e) => handleInputChange(e.target.value)}
+          />
+        </label>
+      </div>
+      <div className='quadrant4'>
+        <label className='label'>
+          Converted Value:
+          <input className='input'
+            type="number"
+            value={convertedValue}
+            readOnly
+          />
+        </label>
+        </div>
+        </div>
+        <div>
+          <div> </div>
+        <div className='quadrant5'>
+
           <button onClick={handleBackButtonClick}>Back to Homepage</button>
+        </div>
+        </div>
+      </div>
     </div>
-</div>
-</div>
-</div>
+  );
+};
 
-
-)
-}
-export default Length
+export default Length;

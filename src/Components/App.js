@@ -10,6 +10,7 @@ import Weight from './Weight'
 import Speed from './Speed';
 import Area from './Area';
 import Length from './Length';
+import Volume from './Volume';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path = "speed" element = {<Speed/>}/>
           <Route path = "area" element = {<Area/>}/>
           <Route path = "length" element = {<Length/>} />
+          <Route path = "volume" element = {<Volume/>} />
         </Routes>
       </div>
     </Router>

@@ -1,91 +1,342 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import './TimeCon.css';
+import './tempcon.css';
 
-const TimeCon = () => {
-  const navigate = useNavigate();
+function TimeCon (){
 
-  const handleBackButtonClick = () => {
-    navigate('/');
-  };
+    const navigate = useNavigate();
 
-  const [selectedUnitLeft, setSelectedUnitLeft] = useState('hours');
-  const [selectedUnitRight, setSelectedUnitRight] = useState('minutes');
-  const [inputValueLeft, setInputValueLeft] = useState('');
-  const [conversionResult, setConversionResult] = useState('');
-  
-  const leftColumnRef = useRef();
-  const rightColumnRef = useRef();
+    const handleBackButtonClick = () => {
+      navigate('/');
+    };
 
-  useEffect(() => {
-    const updateConversionResult = () => {
-      const value = parseFloat(inputValueLeft);
+    const [leftUnit, setLeftUnit] = useState ('hour');
+    const [rightUnit, setRightUnit] = useState ('minute')
+    const [inputValue, setInputValue] = useState ('')
+    const [convertedValue, setConvertedValue] = useState ('');
 
-      if (!isNaN(value)) {
-        const conversion = calculateConversion(value, selectedUnitLeft, selectedUnitRight);
-        setConversionResult(conversion);
+    const handleInputChange = (value) => {
+        setInputValue (value);
+        convertTime (value, leftUnit , rightUnit)
+    }
+
+    const handleLeftUnitChange = (unit) => {
+        setLeftUnit (unit)
+        convertTime(inputValue, unit, rightUnit)
+    };
+
+    const handleRightUnitChange = (unit) =>{
+        setRightUnit (unit)
+        convertTime (inputValue,leftUnit, unit)
+    }
+
+    const convertTime = (value, fromUnit,toUnit) =>{
+        if (!value.trim()) {
+      setConvertedValue('');
+      return;
+        }
+
+    let convertedTime;
+        if (fromUnit === 'century') {
+            if (toUnit === 'millenium') {
+                convertedTime = (value) * .01
+            } else if (toUnit === 'hour') {
+                convertedTime = (value) * 876000
+            } else if (toUnit === 'minute') {
+                convertedTime = (value) * 52560000
+            } else if (toUnit === 'milliseconds'){
+                convertedTime = (value) * 3153600000000
+            } else if (toUnit === 'century'){
+                convertedTime = parseFloat(value)
+            }else if (toUnit === 'seconds'){
+                convertedTime = (value) * 3153600000 
+            }else if (toUnit === 'day'){
+                convertedTime = (value) * 36500
+            }else if (toUnit === 'week'){
+                convertedTime = (value) * 5214.285714
+            }else if (toUnit === 'month'){
+                convertedTime = (value) * 1200
+            }else if (toUnit === 'year'){
+                convertedTime = (value) * 100
+            }else if (toUnit === 'decade'){
+                convertedTime = (value) * 10
+            }
+
+        } else if (fromUnit === 'hour'){
+            if (toUnit === 'century') {
+                convertedTime = (value) * .000001141552511
+            } else if (toUnit === 'hour') {
+                convertedTime = parseFloat(value) 
+            } else if (toUnit === 'minute') {
+                convertedTime = (value) * 60
+            } else if (toUnit === 'milliseconds'){
+                convertedTime = (value) * 3600000
+            } else if (toUnit === 'millenium'){
+                convertedTime = (value) * .0000001141552511
+            }else if (toUnit === 'seconds'){
+                convertedTime = (value) * 3600
+            }else if (toUnit === 'day'){
+                convertedTime = (value) * .04166666667
+            }else if (toUnit === 'month'){
+                convertedTime = (value) * .001369863014
+            }else if (toUnit === 'year'){
+                convertedTime = (value) * .0001141552511
+            }else if (toUnit === 'week'){
+                convertedTime = (value) * .005952380952
+            }else if (toUnit === 'decade'){
+                convertedTime = (value) * .00001141552511
+            }
+
+
+        } else if (fromUnit === 'millenium') {
+            if (toUnit === 'century') {
+                convertedTime = (value) * 10
+            } else if (toUnit === 'hour') {
+                convertedTime = (value) * 8760000
+            } else if (toUnit === 'minute') {
+                convertedTime = (value) * 525600000
+            } else if (toUnit === 'milliseconds'){
+                convertedTime = (value) * 31536000000000
+            } else if (toUnit === 'millenium'){
+                convertedTime = parseFloat(value)
+            }else if (toUnit === 'seconds'){
+                convertedTime = (value) * 31536000000
+            }else if (toUnit === 'day'){
+                convertedTime = (value) * 365000
+            }else if (toUnit === 'week'){
+                convertedTime = (value) *52142.85714
+            }else if (toUnit === 'month'){
+                convertedTime = (value) *12000
+            }else if (toUnit === 'year'){
+                convertedTime = (value) * 1000
+            }else if (toUnit === 'decade'){
+                convertedTime = (value) * 100
+            }
+
+        } else if (fromUnit === 'minute') {
+            if (toUnit === 'century') {
+                convertedTime = (value) * .00000001902587519
+            } else if (toUnit === 'hour') {
+                convertedTime = (value) * .01666666667
+            } else if (toUnit === 'minute') {
+                convertedTime = parseFloat(value)
+            } else if (toUnit === 'milliseconds'){
+                convertedTime = (value) * 60000
+            } else if (toUnit === 'millenium'){
+                convertedTime = (value) * .0000001902587519
+            }else if (toUnit === 'seconds'){
+                convertedTime = (value) * 60
+            }else if (toUnit === 'day'){
+                convertedTime = (value) * .0006944444444
+            }else if (toUnit === 'week'){
+                convertedTime = (value) * .00009920634921
+            }else if (toUnit === 'month'){
+                convertedTime = (value) * .00002283105023
+            }else if (toUnit === 'year'){
+                convertedTime = (value) * .000001902587519
+            }else if (toUnit === 'decade'){
+                convertedTime = (value) * .0000001902587519
+            }
+
+        }else if (fromUnit === 'milliseconds') {
+            if (toUnit === 'century') {
+                convertedTime = (value) * .0000000000003170979198
+            } else if (toUnit === 'hour') {
+                convertedTime = (value) * 0.000000277777778
+            } else if (toUnit === 'minute') {
+                convertedTime = (value) * .00001666666667
+            } else if (toUnit === 'milliseconds'){
+                convertedTime = parseFloat(value) 
+            } else if (toUnit === 'millenium'){
+                convertedTime = (value) * .00000000000003170979198
+            }else if (toUnit === 'seconds'){
+                convertedTime = (value) * .001
+            }else if (toUnit === 'day'){
+                convertedTime = (value) *.00000001157407407
+            }else if (toUnit === 'week'){
+                convertedTime = (value) * .000000001653439153
+            }else if (toUnit === 'month'){
+                convertedTime = (value) * .0000000003805175038
+            }else if (toUnit === 'year'){
+                convertedTime = (value) * .00000000003170979198
+            }else if (toUnit === 'decade'){
+                convertedTime = (value) * .000000000003170979198
+            }
+
+        }else if (fromUnit === 'seconds') {
+          if (toUnit === 'century') {
+              convertedTime = (value) * .0000000003170979198
+          } else if (toUnit === 'hour') {
+              convertedTime = (value) * 0.000277777778
+          } else if (toUnit === 'minute') {
+              convertedTime = (value) * .01666666667
+          } else if (toUnit === 'seconds'){
+              convertedTime = parseFloat(value) 
+          } else if (toUnit === 'millenium'){
+              convertedTime = (value) * .00000000003170979198
+          }else if (toUnit === 'seconds'){
+              convertedTime = (value) * 1000
+          }else if (toUnit === 'day'){
+              convertedTime = (value) *.00001157407407
+          }else if (toUnit === 'week'){
+              convertedTime = (value) * .000001653439153
+          }else if (toUnit === 'month'){
+              convertedTime = (value) * .0000003805175038
+          }else if (toUnit === 'year'){
+              convertedTime = (value) * .00000003170979198
+          }else if (toUnit === 'decade'){
+              convertedTime = (value) * .000000003170979198
+          }
+
+        }else if (fromUnit === 'day') {
+            if (toUnit === 'century') {
+                convertedTime = (value) * .00002739726027
+            } else if (toUnit === 'hour') {
+                convertedTime = (value) * 24
+            } else if (toUnit === 'minute') {
+                convertedTime = (value) * 1440
+            } else if (toUnit === 'milliseconds'){
+                convertedTime = (value) * 86400000
+            } else if (toUnit === 'millenium'){
+                convertedTime = (value) * .000002739726027
+            }else if (toUnit === 'seconds'){
+                convertedTime = (value) *86400
+            }else if (toUnit === 'day'){
+                convertedTime = parseFloat(value) 
+            }else if (toUnit === 'week'){
+                convertedTime = (value) * .01428571429
+            }else if (toUnit === 'month'){
+                convertedTime = (value)* .03287671233
+            }else if (toUnit === 'year'){
+                convertedTime = (value) * .002739726027
+            }else if (toUnit === 'decade'){
+                convertedTime = (value) * .0002739726027
+            }
+
+        }else if (fromUnit === 'week') {
+            if (toUnit === 'century') {
+                convertedTime = (value) * .00001917808219
+            } else if (toUnit === 'hour') {
+                convertedTime = (value) * 168
+            } else if (toUnit === 'minute') {
+                convertedTime = (value) * 10080
+            } else if (toUnit === 'milliseconds'){
+                convertedTime = (value) * 604800000
+            } else if (toUnit === 'millenium'){
+                convertedTime = (value) * .000001917808219
+            }else if (toUnit === 'seconds'){
+                convertedTime = (value) * 604800
+            }else if (toUnit === 'day'){
+                convertedTime = (value) * .8928571429
+            }else if (toUnit === 'week'){
+                convertedTime = parseFloat(value)
+            }else if (toUnit === 'month'){
+                convertedTime = (value) * .2301369863
+            }else if (toUnit === 'year'){
+                convertedTime = (value) * .01917808219
+            }else if (toUnit === 'decade'){
+                convertedTime = (value) * .001917808219
+            }
+
+        }else if (fromUnit === 'month') {
+            if (toUnit === 'century') {
+                convertedTime = (value) * .0008333333333
+            } else if (toUnit === 'hour') {
+                convertedTime = (value) * 730
+            } else if (toUnit === 'minute') {
+                convertedTime = (value) * 43800
+            } else if (toUnit === 'milliseconds'){
+                convertedTime = (value) * 2628000000
+            } else if (toUnit === 'millenium'){
+                convertedTime = (value) * .00008333333333
+            }else if (toUnit === 'seconds'){
+                convertedTime = (value) * 2628000
+            }else if (toUnit === 'day'){
+                convertedTime = (value) * 30.41666667
+            }else if (toUnit === 'week'){
+                convertedTime = (value)* 4.345238095
+            }else if (toUnit === 'month'){
+                convertedTime = parseFloat(value)
+            }else if (toUnit === 'year'){
+                convertedTime = (value) * .083333333333
+            }else if (toUnit === 'decade'){
+                convertedTime = (value) * .0083333333333
+            }
+
+
+        }else if (fromUnit === 'year') {
+            if (toUnit === 'century') {
+                convertedTime = (value) * .01
+            } else if (toUnit === 'hour') {
+                convertedTime = (value) * 8760
+            } else if (toUnit === 'minute') {
+                convertedTime = (value) * 525600
+            } else if (toUnit === 'milliseconds'){
+                convertedTime = (value) * 31536000000
+            } else if (toUnit === 'millenium'){
+                convertedTime = (value) * .001
+            }else if (toUnit === 'seconds'){
+                convertedTime = (value) * 31536000
+            }else if (toUnit === 'day'){
+                convertedTime = (value) * 365
+            }else if (toUnit === 'week'){
+                convertedTime = (value) * 52.14285714
+            }else if (toUnit === 'month'){
+                convertedTime = (value) * 12
+            }else if (toUnit === 'year'){
+                convertedTime = parseFloat(value) 
+            }else if (toUnit === 'decade'){
+                convertedTime = (value) * .1
+            }
+
+
+        }else if (fromUnit === 'decade') {
+            if (toUnit === 'century') {
+                convertedTime = (value) * .1
+            } else if (toUnit === 'hour') {
+                convertedTime = (value) * 87600
+            } else if (toUnit === 'minute') {
+                convertedTime = (value) * 5256000
+            } else if (toUnit === 'milliseconds'){
+                convertedTime = (value) * 315360000000
+            } else if (toUnit === 'millenium'){
+                convertedTime = (value) * .001
+            }else if (toUnit === 'seconds'){
+                convertedTime = (value) * 315360000
+            }else if (toUnit === 'day'){
+                convertedTime = (value) * 3650
+            }else if (toUnit === 'week'){
+                convertedTime = (value) * 521.4285714
+            }else if (toUnit === 'month'){
+                convertedTime = (value) * 120
+            }else if (toUnit === 'year'){
+                convertedTime = (value) * 10
+            }else if (toUnit === 'decade'){
+                convertedTime = parseFloat(value)
+            }
+        }
+         if (!isNaN(convertedTime)) {
+        setConvertedValue(convertedTime.toFixed(10));
       } else {
-        setConversionResult('');
+        setConvertedValue('');
       }
-    };
+    }
 
-    updateConversionResult();
-  }, [selectedUnitLeft, selectedUnitRight, inputValueLeft]);
 
-  const calculateConversion = (value, fromUnit, toUnit) => {
-    const unitsInMinutes = {
-      millenium: 525600000,
-      century: 52560000,
-      decade: 5256000,
-      year: 525600,
-      month: 43800,
-      week: 10080,
-      day: 1440,
-      hours: 60,
-      minutes: 1,
-      seconds: 1 / 60,
-      milliseconds: 1 / 60000,
-    };
-
-    const valueInMinutes = value * unitsInMinutes[fromUnit];
-    return (valueInMinutes / unitsInMinutes[toUnit]).toFixed(10);
-  };
-
-  const handleLeftColumnScroll = (e) => {
-    const scrollTop = e.target.scrollTop;
-    const unitHeight = e.target.scrollHeight / 11; // Number of units
-
-    const index = Math.floor(scrollTop / unitHeight);
-    const units = ['millenium', 'century', 'decade', 'year', 'month', 'week', 'day', 'hours', 'minutes', 'seconds', 'milliseconds'];
-
-    setSelectedUnitLeft(units[index]);
-  };
-
-  const handleRightColumnScroll = (e) => {
-    const scrollTop = e.target.scrollTop;
-    const unitHeight = e.target.scrollHeight / 11; // Number of units
-
-    const index = Math.floor(scrollTop / unitHeight);
-    const units = ['millenium', 'century', 'decade', 'year', 'month', 'week', 'day', 'hours', 'minutes', 'seconds', 'milliseconds'];
-
-    setSelectedUnitRight(units[index]);
-  };
-
-  return (
-    <div>
-      <div>
-        <h2>Time Conversion</h2>
-        <div className="container">
-          <div className="column left-column" ref={leftColumnRef} onScroll={handleLeftColumnScroll}>
-            <div>
-              <label>
-                {/* Scrollable input for selecting units */}
-                Select Unit:
-                <select
-                  value={selectedUnitLeft}
-                  onChange={(e) => setSelectedUnitLeft(e.target.value)}
-                >
-                  <option value="millenium">Millennium</option>
+    return (
+        <div>
+          <div className='title-con'>
+          <span className= "title">Time</span>
+          <span className= "title">Conversion</span>
+          </div>
+          <div>
+          <div className='temperature-container'>
+          <div className='quadrant1'>
+            <label className='label'>
+              From:
+              <select className ='select' value={leftUnit} onChange={(e) => handleLeftUnitChange(e.target.value)}>
+              <option value= 'century' > century</option>
+              <option value="millenium">Millennium</option>
                   <option value="century">Century</option>
                   <option value="decade">Decade</option>
                   <option value="year">Year</option>
@@ -96,30 +347,15 @@ const TimeCon = () => {
                   <option value="minutes">Minutes</option>
                   <option value="seconds">Seconds</option>
                   <option value="milliseconds">Millisecond</option>
-                </select>
-              </label>
-            </div>
-            <div>
-              <label>
-                Input Value:
-                <input
-                  type="number"
-                  value={inputValueLeft}
-                  onChange={(e) => setInputValueLeft(e.target.value)}
-                />
-              </label>
-            </div>
+              </select>
+            </label>
           </div>
-          <div className="column right-column" ref={rightColumnRef} onScroll={handleRightColumnScroll}>
-            <div>
-              <label>
-                {/* Scrollable input for selecting units */}
-                Select Unit:
-                <select
-                  value={selectedUnitRight}
-                  onChange={(e) => setSelectedUnitRight(e.target.value)}
-                >
-                  <option value="millenium">Millennium</option>
+          <div className='quadrant2'>
+            <label className='label'>
+              To:
+              <select className='select' value={rightUnit} onChange={(e) => handleRightUnitChange(e.target.value)}>
+              <option value= 'century' > century</option>
+              <option value="millenium">Millennium</option>
                   <option value="century">Century</option>
                   <option value="decade">Decade</option>
                   <option value="year">Year</option>
@@ -130,602 +366,40 @@ const TimeCon = () => {
                   <option value="minutes">Minutes</option>
                   <option value="seconds">Seconds</option>
                   <option value="milliseconds">Millisecond</option>
-                </select>
-              </label>
+              </select>
+            </label>
+          </div>
+          <div className='quadrant3'>
+            <label className='label'>
+              Input Value:
+              <input className='input'
+                type="number"
+                value={inputValue}
+                onChange={(e) => handleInputChange(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className='quadrant4'>
+            <label className='label'>
+              Converted Value:
+              <input className='input'
+                type="number"
+                value={convertedValue}
+                readOnly
+              />
+            </label>
+            </div>
+            </div>
+            <div>
+              <div> </div>
+            <div className='quadrant5'>
+    
+              <button onClick={handleBackButtonClick}>Back to Homepage</button>
+            </div>
             </div>
           </div>
         </div>
-        <div >
-          <div className='column right-column con result'>
-        <label>
-          Conversion Result:
-          <input
-            type="text"
-            value={conversionResult}
-            readOnly
-          />
-        </label>
-        </div>
-      </div>
-        <div classname= 'btn'>
-          <button onClick={handleBackButtonClick}>Back to Homepage</button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default TimeCon;
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import './TimeCon.css'
-
-
-
-// const TimeCon = () => {
-//   // Define the navigate function
-//   const navigate = useNavigate();
-
-//   // Add a function to handle the back button click
-//   const handleBackButtonClick = () => {
-//     // Navigate back to the homepage or any other route you desire
-//     navigate('/');
-//   };
-//     const [inputValue, setInputValue] = useState('');
-//     const [conversionResult, setConversionResult] = useState('');
-//     const [millennium,setMillennium] = useState ('')
-//     const [century, setCentury] = useState ('')
-//     const [decade, setDecade] = useState ('')
-//     const [calendarYear,setCalendarYear] = useState ('')
-//     const [month, setMonth] = useState ('')
-//     const [week, setWeek] = useState ('')
-//     const [day,setDay] = useState ('')
-//     const [hour, setHour] = useState ('')
-//     const [minute, setMinute] = useState ('')
-//     const [second,setSecond] = useState ('')
-//     const [millisecond,setMillisecond] = useState ('')
-
-
-// const handleMillenniumChange = (value) => {
-//     setMillennium(value);
-//     // Convert millennium to century
-//     const centuryValue = (value * 10);
-//     setCentury(centuryValue.toFixed(5));
-
-//     // Convert millennium to decade
-//     const decadeValue = value * 100;
-//     setDecade(decadeValue.toFixed(5));
-
-//     const calendarYearValue = value * 1000;
-//     setCalendarYear(calendarYearValue.toFixed(5));
-
-//     const monthValue = value * 12000;
-//     setMonth(monthValue.toFixed(10));
-
-//     const weekValue = value * 52142.85714;
-//     setWeek(weekValue.toFixed(10));
-
-//     const dayValue = value * 365000;
-//     setDay(dayValue.toFixed(10));
-
-//     const hourValue = value * 8760000;
-//     setHour(hourValue.toFixed(10));
-
-//     const minuteValue = value * 525600000;
-//     setMinute(minuteValue.toFixed(10));
-
-//     const secondValue = value * 31536000000;
-//     setSecond(secondValue.toFixed(10));
-
-//     const millisecondValue = value * 31536000000000;
-//     setMillisecond(millisecondValue.toFixed(10));
-//   };
-
-
-//   const handleCenturyChange = (value) => {
-//     setCentury(value);
-//     // Convert century to millennium
-//     const millenniumValue = (value / 10);
-//     setMillennium(millenniumValue.toFixed(5));
-
-//     const decadeValue = value * 10;
-//     setDecade(decadeValue.toFixed(5));
-
-//     const calendarYearValue = value * 100;
-//     setCalendarYear(calendarYearValue.toFixed(5));
-
-//     const monthValue = value * 1200;
-//     setMonth(monthValue.toFixed(10));
-
-//     const weekValue = value * 5214.285714;
-//     setWeek(weekValue.toFixed(10));
-
-//     const dayValue = value * 36500;
-//     setDay(dayValue.toFixed(10));
-
-//     const hourValue = value * 876000;
-//     setHour(hourValue.toFixed(10));
-
-//     const minuteValue = value * 52560000;
-//     setMinute(minuteValue.toFixed(10));
-
-//     const secondValue = value * 3153600000;
-//     setSecond(secondValue.toFixed(10));
-
-//     const millisecondValue = value * 3153600000000;
-//     setMillisecond(millisecondValue.toFixed(10));
-//   };
-
-
-//   const handleDecadeChange = (value) => {
-//     setDecade(value);
+      );
+    };
     
-//     const centuryValue = (value / 10);
-//     setCentury(centuryValue.toFixed(5));
-
-    
-//     const millenniumValue = value / 100;
-//     setMillennium(millenniumValue.toFixed(5));
-
-//     const calendarYearValue = value * 10;
-//     setCalendarYear(calendarYearValue.toFixed(5));
-
-//     const monthValue = value * 120;
-//     setMonth(monthValue.toFixed(10));
-
-//     const weekValue = value * 521.4285714;
-//     setWeek(weekValue.toFixed(10));
-
-//     const dayValue = value * 3650;
-//     setDay(dayValue.toFixed(10));
-
-//     const hourValue = value * 87600;
-//     setHour(hourValue.toFixed(10));
-
-//     const minuteValue = value * 5256000;
-//     setMinute(minuteValue.toFixed(10));
-
-//     const secondValue = value * 315360000;
-//     setSecond(secondValue.toFixed(10));
-
-//     const millisecondValue = value * 315360000000;
-//     setMillisecond(millisecondValue.toFixed(10));
-//   };
-
-
-//   const handleCalendarYearChange = (value) => {
-//     setCalendarYear(value);
-
-//     const centuryValue = (value / 100);
-//     setCentury(centuryValue.toFixed(5));
-
-    
-//     const decadeValue = value / 10;
-//     setDecade(decadeValue.toFixed(5));
-
-//     const millenniumValue = value / 1000;
-//     setMillennium(millenniumValue.toFixed(5));
-
-//     const monthValue = value * 12;
-//     setMonth(monthValue.toFixed(10));
-
-//     const weekValue = value * 52.14285714;
-//     setWeek(weekValue.toFixed(10));
-
-//     const dayValue = value * 365;
-//     setDay(dayValue.toFixed(10));
-
-//     const hourValue = value * 8760;
-//     setHour(hourValue.toFixed(10));
-
-//     const minuteValue = value * 525600;
-//     setMinute(minuteValue.toFixed(10));
-
-//     const secondValue = value * 31536000;
-//     setSecond(secondValue.toFixed(10));
-
-//     const millisecondValue = value * 31536000000;
-//     setMillisecond(millisecondValue.toFixed(10));
-//   };
-
-
-//   const handleMonthChange = (value) => {
-//     setMonth(value);
-    
-//     const centuryValue = (value / 12) / 100;
-//     setCentury(centuryValue.toFixed(5));
-
-   
-//     const decadeValue = (value / 12) / 10;
-//     setDecade(decadeValue.toFixed(5));
-
-//     const calendarYearValue = value / 12;
-//     setCalendarYear(calendarYearValue.toFixed(5));
-
-//     const millenniumValue = (value / 12) / 1000;
-//     setMillennium(millenniumValue.toFixed(10));
-
-//     const weekValue = value * 4.345238095;
-//     setWeek(weekValue.toFixed(10));
-
-//     const dayValue = value * 30.41666667;
-//     setDay(dayValue.toFixed(10));
-
-//     const hourValue = value * 730;
-//     setHour(hourValue.toFixed(10));
-
-//     const minuteValue = value * 43800;
-//     setMinute(minuteValue.toFixed(10));
-
-//     const secondValue = value * 2628000;
-//     setSecond(secondValue.toFixed(10));
-
-//     const millisecondValue = value * 2628000000;
-//     setMillisecond(millisecondValue.toFixed(10));
-//   };
-
-
-//   const handleWeekChange = (value) => {
-//     setWeek(value);
-    
-//     const centuryValue = (value / 52.14285714) / 100;
-//     setCentury(centuryValue.toFixed(5));
-
-   
-//     const decadeValue = (value / 52.14285714) / 10;
-//     setDecade(decadeValue.toFixed(5));
-
-//     const calendarYearValue = value / 52.14285714;
-//     setCalendarYear(calendarYearValue.toFixed(5));
-
-//     const millenniumValue = (value / 52.14285714) / 1000;
-//     setMillennium(millenniumValue.toFixed(10));
-
-//     const monthValue = value / 4.345238095;
-//     setMonth(monthValue.toFixed(10));
-
-//     const dayValue = value * 7;
-//     setDay(dayValue.toFixed(10));
-
-//     const hourValue = value * 168;
-//     setHour(hourValue.toFixed(10));
-
-//     const minuteValue = value * 10080;
-//     setMinute(minuteValue.toFixed(10));
-
-//     const secondValue = value * 604800;
-//     setSecond(secondValue.toFixed(10));
-
-//     const millisecondValue = value * 604800000;
-//     setMillisecond(millisecondValue.toFixed(10));
-//   };
-
-
-//   const handleDayChange = (value) => {
-//     setDay(value);
-
-//     const centuryValue = value / (365 * 100);
-//     setCentury(centuryValue.toFixed(5));
-
-//     const decadeValue = value / 3650;
-//     setDecade(decadeValue.toFixed(5));
-
-//     const weekValue = value / 7;
-//     setWeek(weekValue.toFixed(10));
-
-//     const millenniumValue = value / 365000;
-//     setMillennium(millenniumValue.toFixed(10));
-
-//     const monthValue = (value * 12) / 365;
-//     setMonth(monthValue.toFixed(10));
-
-//     const calendarYearValue = value / 365;
-//     setCalendarYear(calendarYearValue.toFixed(10));
-
-//     const hourValue = value * 24;
-//     setHour(hourValue.toFixed(10));
-
-//     const minuteValue = value * 1440;
-//     setMinute(minuteValue.toFixed(10));
-
-//     const secondValue = value * 86400;
-//     setSecond(secondValue.toFixed(10));
-
-//     const millisecondValue = value * 86400000;
-//     setMillisecond(millisecondValue.toFixed(10));
-// };
-
-
-
-//   const handleHourChange = (value) => {
-//     setHour(value);
-
-//     const centuryValue = value / (24 * 365 * 100);
-//     setCentury(centuryValue.toFixed(13));
-
-//     const decadeValue = value / (24 * 365 * 10);
-//     setDecade(decadeValue.toFixed(13));
-
-//     const weekValue = value / 168;
-//     setWeek(weekValue.toFixed(10));
-
-//     const millenniumValue = value / (24 * 365 * 1000);
-//     setMillennium(millenniumValue.toFixed(10));
-
-//     const monthValue = value / 24 / (365 / 12);
-//     setMonth(monthValue.toFixed(10));
-
-//     const calendarYearValue = value / 24 / 365;
-//     setCalendarYear(calendarYearValue.toFixed(10));
-
-//     const dayValue = value * 0.0416667;
-//     setDay(dayValue.toFixed(10));
-
-//     const minuteValue = value * 60;
-//     setMinute(minuteValue.toFixed(10));
-
-//     const secondValue = value * 3600;
-//     setSecond(secondValue.toFixed(10));
-
-//     const millisecondValue = value * 3600000;
-//     setMillisecond(millisecondValue.toFixed(10));
-// };
-
-
-
-// const handleMinuteChange = (value) => {
-//     setMinute(value);
-
-//     const centuryValue = value / (60 * 24 * 365 * 100);
-//     setCentury(centuryValue.toFixed(5));
-
-//     const decadeValue = value / (60 * 24 * 365 * 10);
-//     setDecade(decadeValue.toFixed(5));
-
-//     const weekValue = value / (60 * 168);
-//     setCalendarYear(weekValue.toFixed(5));
-
-//     const millenniumValue = value / (60 * 24 * 365 * 1000);
-//     setMillennium(millenniumValue.toFixed(10));
-
-//     const monthValue = value / 60 / 24 / (365 /12);
-//     setMonth(monthValue.toFixed(10));
-
-//     const calendarYearValue = value / 60 / 24 / 365;
-//     setCalendarYear(calendarYearValue.toFixed(10));
-
-//     const hourValue = value / 60;
-//     setHour(hourValue.toFixed(10));
-
-//     const secondValue = value * 60;
-//     setSecond(secondValue.toFixed(10));
-
-//     const millisecondValue = value * 60000;
-//     setMillisecond(millisecondValue.toFixed(10));
-// };
-
-
-// const handleSecondChange = (value) => {
-//     setSecond(value);
-
-//     const centuryValue = value / (60 * 60 * 24 * 365 * 100);
-//     setCentury(centuryValue.toFixed(5));
-
-//     const decadeValue = value / (60 * 60 * 24 * 365 * 10);
-//     setDecade(decadeValue.toFixed(5));
-
-//     const weekValue = value / (60 * 60 * 168);
-//     setWeek(weekValue.toFixed(5));
-
-//     const millenniumValue = value / (60 * 60 * 24 * 365 * 1000);
-//     setMillennium(millenniumValue.toFixed(10));
-
-//     const monthValue = value / 60 / 60 / 24 / (365/12);
-//     setMonth(monthValue.toFixed(10));
-
-//     const calendarYearValue = value / (60 * 60 * 24 * 365);
-//     setCalendarYear(calendarYearValue.toFixed(10));
-
-//     const hourValue = value / 3600;
-//     setHour(hourValue.toFixed(10));
-
-//     const dayValue = value / 60 / 60 / 24;
-//     setDay(dayValue.toFixed(10));
-
-//     const minuteValue = value / 60;
-//     setMinute(minuteValue.toFixed(10));
-
-//     const millisecondValue = value * 1000;
-//     setMillisecond(millisecondValue.toFixed(10));
-// };
-
-
-// const handleMillisecondChange = (value) => {
-//     setMillisecond(value);
-
-//     const centuryValue = value / (1000 * 60 * 60 * 24 * 365 * 100);
-//     setCentury(centuryValue.toFixed(5));
-
-//     const decadeValue = value / (1000 * 60 * 60 * 24 * 365 * 10);
-//     setDecade(decadeValue.toFixed(5));
-
-//     const weekValue = value / (1000 * 60 * 60 * 168);
-//     setWeek(weekValue.toFixed(5));
-
-//     const millenniumValue = value / (1000 * 60 * 60 * 24 * 365 * 1000);
-//     setMillennium(millenniumValue.toFixed(10));
-
-//     const monthValue = value / 1000 / 60 / 60 / 24 / (365 / 12);
-//     setMonth(monthValue.toFixed(10));
-
-//     const calendarYearValue = value / (1000 * 60 * 60 * 24 * 365);
-//     setCalendarYear(calendarYearValue.toFixed(10));
-
-//     const dayValue = value / 1000 / 60 / 60 / 24;
-//     setDay(dayValue.toFixed(10));
-
-//     const hourValue = value / 3600000;
-//     setHour(hourValue.toFixed(10));
-
-//     const minuteValue = value / 60000;
-//     setMinute(minuteValue.toFixed(10));
-
-//     const secondValue = value / 1000;
-//     setSecond(secondValue.toFixed(10));
-// };
-
-// return (
-//   <div>
-//     <div>
-//       <h2>Time Conversion</h2>
-//       <div className="container">
-//         <div className="column left-column">
-//           {/* Left column content */}
-//           <div>
-//             <label>
-//           Millennium:
-//           <input
-//             type="number"
-//             id="millenniuminput"
-//             value={millennium}
-//             onChange={(e) => handleMillenniumChange(e.target.value)}
-//           />
-//         </label>
-//       </div>
-//       <div>
-//         <label>
-//           Century:
-//           <input
-//             type="number"
-//             id="centuryinput"
-//             value={century}
-//             onChange={(e) => handleCenturyChange(e.target.value)}
-//           />
-//         </label>
-//       </div>
-//       <div>
-//         <label>
-//           Decade:
-//           <input
-//             type="number"
-//             id="decadeinput"
-//             value={decade}
-//             onChange={(e) => handleDecadeChange(e.target.value)}
-//           />
-//         </label>
-//       </div>
-//       <div>
-//         <label>
-//           Calendar Year:
-//           <input
-//             type="number"
-//             id="yearinput"
-//             value={calendarYear}
-//             onChange={(e) => handleCalendarYearChange(e.target.value)}
-//           />
-//         </label>
-//       </div>
-//       <div>
-//         <label>
-//           Month:
-//           <input
-//             type="number"
-//             id="monthinput"
-//             value={month}
-//             onChange={(e) => handleMonthChange(e.target.value)}
-//           />
-//         </label>
-//       </div>
-//       <div>
-//         <label>
-//           Week:
-//           <input
-//             type="number"
-//             id="weekinput"
-//             value={week}
-//             onChange={(e) => handleWeekChange(e.target.value)}
-//           />
-//         </label>
-//       </div>
-//       <div>
-//         <label>
-//           Day:
-//           <input
-//             type="number"
-//             id="dayinput"
-//             value={day}
-//             onChange={(e) => handleDayChange(e.target.value)}
-//           />
-//         </label>
-//       </div>
-//       <div>
-//         <label>
-//           Hour:
-//           <input
-//             type="number"
-//             id="hourinput"
-//             value={hour}
-//             onChange={(e) => handleHourChange(e.target.value)}
-//           />
-//         </label>
-//       </div>
-//       <div>
-//         <label>
-//           Minute:
-//           <input
-//             type="number"
-//             id="minuteinput"
-//             value={minute}
-//             onChange={(e) => handleMinuteChange(e.target.value)}
-//           />
-//         </label>
-//       </div>
-//       <div>
-//         <label>
-//           Second:
-//           <input
-//             type="number"
-//             id="secondinput"
-//             value={second}
-//             onChange={(e) => handleSecondChange(e.target.value)}
-//           />
-//         </label>
-//       </div>
-//       <div>
-//         <label>
-//           Millisecond:
-//           <input
-//             type="number"
-//             id="millisecondinput"
-//             value={millisecond}
-//             onChange={(e) => handleMillisecondChange(e.target.value)}
-//           />
-//         </label>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="column right-column">
-//           {/* Right column content */}
-//           {/* Display the converted values here */}
-//         </div>
-//       </div>
-//       <div>
-//         <button onClick={handleBackButtonClick}>Back to Homepage</button>
-//       </div>
-//       </div>
-//   );
-// };
-
-// export default TimeCon;
-
+    export default TimeCon;
